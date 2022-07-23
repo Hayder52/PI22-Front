@@ -1,0 +1,65 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+	Ajouter Activiter
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<input [(ngModel)]="Nom" class="form-control" type="text" placeholder="Nom Activiter">
+				<input [(ngModel)]="desciptionActiv" class="form-control mt-2" type="text" placeholder="desciption">
+				<input [(ngModel)]="prixActiv" class="form-control mt-2" type="text" placeholder="prix">
+				<input [(ngModel)]="dateDebutActiv" class="form-control mt-2" type="date" placeholder="date Debut">
+				<input [(ngModel)]="dateFinActiv" class="form-control mt-2" type="date" placeholder="date Fin">
+				<select [(ngModel)]="typeAct">
+					<option *ngFor="let x of tabType" [ngValue]="x">{{x.name}}</option>
+
+				</select>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" (click)="ajoutAct()">Submit</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="card mt-2">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Nom Activiter</th>
+					<th scope="col">Desciption Activiter</th>
+					<th scope="col">Prix Activiter</th>
+					<th scope="col">Date Debut</th>
+					<th scope="col">Date Fin</th>
+					<th scope="col">Type Activiter</th>
+					<th scope="col">Action</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let x of TabAc">
+
+					<td>{{x.nomActiv}}</td>
+					<td>{{x.desciptionActiv}}</td>
+					<td>{{x.prixActiv}}</td>
+					<td>{{x.dateDebutActiv}}</td>
+					<td>{{x.dateFinActiv}}</td>
+					<td>{{x.typeActivite.name}}</td>
+<td><button type="submit"></button></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+</div>

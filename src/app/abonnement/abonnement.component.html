@@ -1,0 +1,73 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	Ajout abonnement
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<input [(ngModel)]="name" class="form-control" type="text" placeholder="Nom ">
+				<input [(ngModel)]="dureeParMois" class="form-control" type="text" placeholder="Duree">
+				<input [(ngModel)]="dateDebut" class="form-control" type="date" >
+
+<select  class="form-control" [(ngModel)]="TabAc2">
+					<option *ngFor="let x of TabAc" value="{{x.id}}">{{x.nomActiv}}</option>
+
+				</select>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" (click)="ajoutAbon()" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+
+	<div class="card">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Duree par mois</th>
+					<th scope="col">Date debut</th>
+					<th scope="col">Date Fin</th>
+					<th scope="col">Prix</th>
+					<th scope="col">Nom activite</th>
+					<th>
+						Action
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let x of tab">
+
+					<td>{{x.name}}</td>
+					<td>{{x.dureeParMois}}</td>
+					<td>{{x.dateDebut}}</td>
+					<td>{{x.dateFin | date:'short'}}</td>
+					<td>{{x.prix}}</td>
+					<td>{{x.activite.nomActiv}}</td>
+					<td>
+						<button class="btn btn-danger" (click)="deletAb(x.userAbn.id,x.activite.id)">
+							Supprimer</button>
+					</td>
+					<td>
+						<button class="btn btn-info">
+							Update</button>
+					</td>
+
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+</div>
